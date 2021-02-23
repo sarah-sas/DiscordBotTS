@@ -1,6 +1,6 @@
 import { MessageEmbed } from "discord.js";
 import { Command, CommandoMessage } from "discord.js-commando";
-const troopinf = require('./inf.json')
+const troopinf = require('../gear/inf.json')
 const d = new Date();
 const n = d.getDay();
 module.exports = class gCommand extends Command {
