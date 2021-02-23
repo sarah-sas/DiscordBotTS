@@ -1,5 +1,5 @@
 import { CommandoClient } from 'discord.js-commando';
-const path = require('path');
+import path from 'path';
 import { prefix, token } from './config.json';
 
 const client = new CommandoClient({
