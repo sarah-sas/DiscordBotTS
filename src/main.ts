@@ -23,5 +23,18 @@ client.once('ready', () => {
   client.user.setActivity('in development');
 });
 
+const Bree = require('bree');
+let bree;
+
+bree = new Bree({
+  root:false,
+  jobs: [
+    // runs `./jobs/some-other-path.js` on start
+    {
+      name: 'AutoRemind.js',
+      path: path.join(__dirname, 'commands', 'gear','AutoRemind.js')
+    },
+  ]});
+bree.run('AutoRemind.js')
 client.on('error', console.error);
 client.login(token);

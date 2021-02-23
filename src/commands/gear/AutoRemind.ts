@@ -1,6 +1,6 @@
 import { MessageEmbed } from "discord.js";
 import { Command, CommandoMessage } from "discord.js-commando";
-const troopinf = require('../gear/inf.json')
+import {default as troopinf} from '../gear/inf.json';
 const d = new Date();
 const n = d.getDay();
 module.exports = class gCommand extends Command {
@@ -64,6 +64,6 @@ module.exports = class gCommand extends Command {
                     .setTimestamp()
                     return message.channel.send(saturdayAuto)
             };
-            return message.channel.send("i dont know why this message even sent")
+            return message.channel.send("i dont know why this message even sent sombebody broke it")
         }
     }

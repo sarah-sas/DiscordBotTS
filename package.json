@@ -32,6 +32,7 @@
   "author": "Jakub Synowiec <github@jakubsynowiec.info>",
   "license": "Apache-2.0",
   "dependencies": {
+    "bree": "^6.2.0",
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.12.2",
     "tslib": "~2.0.3"
