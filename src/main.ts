@@ -1,32 +1,27 @@
-/**
- * Some predefined delays (in milliseconds).
- */
-export enum Delays {
-  Short = 500,
-  Medium = 2000,
-  Long = 5000,
-}
+import { CommandoClient } from 'discord.js-commando';
+const path = require('path');
+import { prefix, token } from './config.json';
 
-/**
- * Returns a Promise<string> that resolves after given time.
- *
- * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - Number of milliseconds to delay resolution of the Promise.
- * @returns {Promise<string>}
- */
-function delayedHello(
-  name: string,
-  delay: number = Delays.Medium,
-): Promise<string> {
-  return new Promise((resolve: (value?: string) => void) =>
-    setTimeout(() => resolve(`Hello, ${name}`), delay),
-  );
-}
+const client = new CommandoClient({
+  commandPrefix: prefix,
+  owner: '633668381954015235',
+  invite: '',
+});
 
-// Below are examples of using ESLint errors suppression
-// Here it is suppressing missing return type definitions for greeter function
+client.registry
+  .registerDefaultTypes()
+  .registerGroups([
+    ['gear', 'commands for finding info on gear'],
+    ['admin', 'AdminTools'],
+  ])
+  .registerDefaultGroups()
+  .registerDefaultCommands()
+  .registerCommandsIn(path.join(__dirname, 'commands'))
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export async function greeter(name: string) {
-  return await delayedHello(name, Delays.Long);
-}
+client.once('ready', () => {
+  console.log(`Logged in as ${client.user.tag} (${client.user.id})`);
+  client.user.setActivity('in development');
+});
+
+client.on('error', console.error);
+client.login(token);
